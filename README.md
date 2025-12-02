@@ -61,7 +61,7 @@
 ## 🌐 Overview
 
 Qveris is the **Tool Operating System (Tool OS)** for AI agents.  
-It standardizes how LLMs discover and call **10,000+ tools** — web search, OCR, PDF parsing, SaaS APIs, internal services, and business actions — through a **single schema**, a **secure sandbox**, and a **routing engine** that selects the best provider. :contentReference[oaicite:0]{index=0}  
+It standardizes how LLMs discover and call **10,000+ tools** — web search, OCR, PDF parsing, SaaS APIs, internal services, and business actions — through a **single schema**, a **secure sandbox**, and a **routing engine** that selects the best provider. 
 
 > If LLMs are the brain, Qveris is the hands: safe, reliable, and repeatable.
 
