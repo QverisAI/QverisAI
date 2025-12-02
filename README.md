@@ -4,7 +4,7 @@
 
   <h1>Qveris — The Tool OS for AI Agents</h1>
 
-  <p><strong>One unified interface to access 10,000+ tools for your AI agents.</strong></p>
+  <p><strong>One unified interface to use 10,000+ tools for your AI agents.</strong></p>
   <p>
   Official Website：<a href="https://qveris.ai" target="_blank"><b>https://qveris.ai</b></a>
   </p>
@@ -188,29 +188,50 @@ Key components:
 
 ```mermaid
 flowchart TB
-  %% Top-level nodes
-  U["User"]
-  L["LLM / Agent"]
-  Q["Qveris Tool OS"]
+  %% --- 1. Minimalist Aesthetic Config (CSS) ---
+  %% Hide default colors, enforce black & white logic
+  linkStyle default stroke:#333,stroke-width:1.5px,fill:none;
+  
+  %% Node Styles: Pure Black & White
+  classDef user fill:#fff,stroke:#000,stroke-width:2px,color:#000,rx:20,ry:20,font-weight:bold;
+  classDef component fill:#fff,stroke:#333,stroke-width:1px,color:#333,rx:4,ry:4;
+  classDef core fill:#000,stroke:#000,stroke-width:2px,color:#fff,rx:6,ry:6,font-weight:bold;
+  classDef tools fill:#f9f9f9,stroke:#ddd,stroke-width:1px,color:#666,rx:2,ry:2,stroke-dasharray: 2 2;
+  
+  %% Container Style: No border, text only, "Airy" feel
+  classDef container fill:none,stroke:none,color:#999,font-size:11px;
 
-  %% Tool layer: 10k+ tools grouped in three buckets
-  subgraph TL["Tool Layer · 10,000+ tools"]
-    direction TB
-    T1["Core built-in tools\n(100+ curated)"]
-    T2["Partner & SaaS tools\n(connectors)"]
-    T3["Custom & enterprise tools\n(published by users)"]
+  %% --- 2. Node Definitions ---
+  U(["👤 User"])
+  L["LLM / Agent"]
+  Q["⚡ Qveris Tool OS"]
+
+  %% --- 3. Bottom Tool Layer (Forced Grouping) ---
+  subgraph ToolLayer ["▼ Tool Ecosystem (10,000+)"]
+    direction LR
+    %% Invisible links to force horizontal alignment
+    T1["Core Tools"] ~~~ T2["SaaS Connectors"] ~~~ T3["Custom Tools"]
   end
 
-  %% --- Request path: top → bottom (solid arrows) ---
-  U -->|"Prompt / request"| L
-  L -->|"tool_call (JSON)"| Q
-  Q -->|"discover, route & execute"| TL
+  %% --- 4. Connection Logic (The Key to Alignment) ---
+  
+  %% Main Flow: Straight line down
+  U -->|"Request"| L
+  L -->|"JSON Call"| Q
+  
+  %% Alignment Fix: Connect Q only to the MIDDLE node (T2)
+  Q -->|"Route & Execute"| T2
+  
+  %% Auxiliary Lines: Dotted lines to side nodes (visual implication only)
+  Q -.-> T1
+  Q -.-> T3
 
-  %% --- Response path: bottom → top (dashed arrows) ---
-  TL -.->|"tool results"| Q
-  Q -.->|"normalized response"| L
-  L -.->|"final answer"| U
-
+  %% --- 5. Apply Styles ---
+  class U user;
+  class L component;
+  class Q core;
+  class T1,T2,T3 tools;
+  class ToolLayer container;
 
 
 ```
