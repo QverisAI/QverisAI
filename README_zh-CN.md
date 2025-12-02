@@ -66,7 +66,7 @@ Qveris 是一个 **面向 AI Agent 的工具操作系统（Tool OS）**，为大
 - **一个标准的工具 Schema**
 - **一个安全可控的沙盒执行环境**
 - **一个智能多提供商路由引擎**
-- **一个覆盖 10,000+ 工具的生态层** :contentReference[oaicite:0]{index=0}  
+- **一个覆盖 10,000+ 工具的生态层** 
 
 > 如果说 LLM 是“大脑”，那 Qveris 就是“手脚”。  
 > 你只需发出一个 `tool_call`，其余交给 Qveris。
