@@ -203,27 +203,54 @@ Qveris 内建：
 
 ```mermaid
 flowchart TB
-  U["User 用户"]
-  L["LLM / Agent"]
-  Q["Qveris Tool OS"]
+  %% --- 1. 极简主义美学配置 (CSS) ---
+  %% 隐藏默认杂乱颜色，强制黑白
+  linkStyle default stroke:#333,stroke-width:1.5px,fill:none;
+  
+  %% 节点样式：纯粹的黑与白
+  classDef user fill:#fff,stroke:#000,stroke-width:2px,color:#000,rx:20,ry:20,font-weight:bold;
+  classDef component fill:#fff,stroke:#333,stroke-width:1px,color:#333,rx:4,ry:4;
+  classDef core fill:#000,stroke:#000,stroke-width:2px,color:#fff,rx:6,ry:6,font-weight:bold;
+  classDef tools fill:#f9f9f9,stroke:#ddd,stroke-width:1px,color:#666,rx:2,ry:2,stroke-dasharray: 2 2;
+  
+  %% 容器样式：去边框，只留文字，保持空气感
+  classDef container fill:none,stroke:none,color:#999,font-size:11px;
 
-  %% Tool layer: 10k+ tools grouped in three buckets
-  subgraph TL["Tool Layer · 10,000+ tools"]
-    direction TB
-    T1["Core built-in tools\n(100+ curated 官方工具)"]
-    T2["Partner & SaaS tools\n(合作伙伴 / 连接器)"]
-    T3["Custom & enterprise tools\n(企业自定义 / 用户提交)"]
+  %% --- 2. 节点定义 ---
+  U(["👤 用户 (User)"])
+  L["LLM 大模型 / 智能体"]
+  Q["⚡ Qveris Tool OS"]
+
+  %% --- 3. 底部工具层 (使用子图强行分组) ---
+  subgraph ToolLayer ["▼ 万级工具生态 (10,000+ Tools)"]
+    direction LR
+    %% 这里使用不可见连接让它们排成一行
+    T1["核心内置工具"] ~~~ T2["SaaS 连接器"] ~~~ T3["自定义工具"]
   end
 
-  %% --- Request path: top → bottom (solid arrows) ---
-  U -->|"Prompt / 请求"| L
-  L -->|"tool_call (JSON 调用)"| Q
-  Q -->|"discover, route & execute\n发现 / 调度 / 执行"| TL
+  %% --- 4. 连线逻辑 (修复不对齐的关键) ---
+  
+  %% 主流程：一条直线贯穿到底
+  U -->|"需求"| L
+  L -->|"JSON 调用"| Q
+  
+  %% 关键修复：让 Q 只连线到中间的 T2，然后分叉，保证视觉居中
+  Q -->|"路由 & 执行"| T2
+  
+  %% 辅助线：用虚线连接左右工具，暗示它们也是目标
+  Q -.-> T1
+  Q -.-> T3
 
-  %% --- Response path: bottom → top (dashed arrows) ---
-  TL -.->|"工具执行结果"| Q
-  Q -.->|"统一格式响应"| L
-  L -.->|"最终回答"| U
+  %% 数据回传：不需要画回去的线，太乱了
+  %% 我们用样式里的 'stroke-width' 和布局暗示了双向交互
+  %% 如果非要画，用一条总线回传 (这里为了美观省略，或者用右侧注释)
+
+  %% --- 5. 应用样式 ---
+  class U user;
+  class L component;
+  class Q core;
+  class T1,T2,T3 tools;
+  class ToolLayer container;
 ```
 
 > 一个简单的 `tool_call` 背后，是 Qveris 在 **10,000+ 工具池**中进行发现、筛选、调度与执行的完整闭环。
