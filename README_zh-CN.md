@@ -19,8 +19,8 @@
     <a href="https://github.com/QverisAI/QverisAI">
       <img src="https://img.shields.io/github/stars/QverisAI/QverisAI?style=social" alt="GitHub stars" />
     </a>
-    <a href="https://www.npmjs.com/package/@qverisai/sdk">
-      <img src="https://img.shields.io/npm/v/@qverisai/sdk?label=@qverisai/sdk" alt="npm version" />
+    <a href="https://www.npmjs.com/package/@qverisai/mcp">
+      <img src="https://img.shields.io/npm/v/@qverisai/mcp?label=@qverisai/mcp" alt="npm version" />
     </a>
     <a href="https://github.com/QverisAI/QverisAI/actions">
       <img src="https://img.shields.io/github/actions/workflow/status/QverisAI/QverisAI/ci.yml?label=build" alt="build status" />
@@ -259,7 +259,7 @@ flowchart TB
 
 ## ⚡ 快速开始
 
-目前最推荐的接入方式是使用 **MCP Server SDK：`@qverisai/sdk`**，
+目前最推荐的接入方式是使用 **MCP Server SDK：`@qverisai/mcp`**，
 可直接接入 Claude Desktop、Cursor 等支持 MCP 的客户端。
 
 ### 1. 安装 & 启动 MCP Server
@@ -267,13 +267,13 @@ flowchart TB
 使用 `npx`：
 
 ```bash
-npx @qverisai/sdk
+npx @qverisai/mcp
 ```
 
 或全局安装：
 
 ```bash
-npm install -g @qverisai/sdk
+npm install -g @qverisai/mcp
 qveris-mcp
 ```
 
@@ -294,7 +294,7 @@ export QVERIS_API_KEY=your_api_key
   "mcpServers": {
     "qveris": {
       "command": "npx",
-      "args": ["@qverisai/sdk"],
+      "args": ["@qverisai/mcp"],
       "env": {
         "QVERIS_API_KEY": "your-api-key-here"
       }
@@ -571,7 +571,7 @@ Qveris 专注于：**工具统一 + 路由优化 + 安全治理 + 生态增长**
 
 ### Q1
 
-* MCP Server SDK（`@qverisai/sdk`）稳定发布
+* MCP Server（`@qverisai/mcp`）稳定发布
 * 50+ 官方内置工具
 * 路由引擎 Alpha 版本
 

@@ -20,8 +20,8 @@
     <a href="https://github.com/QverisAI/QverisAI">
       <img src="https://img.shields.io/github/stars/QverisAI/QverisAI?style=social" alt="GitHub stars" />
     </a>
-    <a href="https://www.npmjs.com/package/@qverisai/sdk">
-      <img src="https://img.shields.io/npm/v/@qverisai/sdk?label=@qverisai/sdk" alt="npm version" />
+    <a href="https://www.npmjs.com/package/@qverisai/mcp">
+      <img src="https://img.shields.io/npm/v/@qverisai/mcp?label=@qverisai/mcp" alt="npm version" />
     </a>
     <a href="https://github.com/QverisAI/QverisAI/actions">
       <img src="https://img.shields.io/github/actions/workflow/status/QverisAI/QverisAI/ci.yml?label=build" alt="build status" />
@@ -253,7 +253,7 @@ flowchart TB
 
 ## ⚡ Quickstart
 
-The fastest way to use Qveris today is via the **MCP Server SDK** (`@qverisai/sdk`).
+The fastest way to use Qveris today is via the **MCP Server SDK** (`@qverisai/mcp`).
 It exposes Qveris tools to any MCP-compatible client (Claude Desktop, Cursor, etc).
 
 ### 1. Install & run the MCP server
@@ -261,13 +261,13 @@ It exposes Qveris tools to any MCP-compatible client (Claude Desktop, Cursor, et
 Using `npx`:
 
 ```bash
-npx @qverisai/sdk
+npx @qverisai/mcp
 ```
 
 Or install globally:
 
 ```bash
-npm install -g @qverisai/sdk
+npm install -g @qverisai/mcp
 qveris-mcp
 ```
 
@@ -284,7 +284,7 @@ You’ll need an API key in `QVERIS_API_KEY`.
   "mcpServers": {
     "qveris": {
       "command": "npx",
-      "args": ["@qverisai/sdk"],
+      "args": ["@qverisai/mcp"],
       "env": {
         "QVERIS_API_KEY": "your-api-key-here"
       }
@@ -300,7 +300,7 @@ You’ll need an API key in `QVERIS_API_KEY`.
   "mcpServers": {
     "qveris": {
       "command": "npx",
-      "args": ["@qverisai/sdk"],
+      "args": ["@qverisai/mcp"],
       "env": {
         "QVERIS_API_KEY": "your-api-key-here"
       }
@@ -593,7 +593,7 @@ High-level public roadmap (subject to change):
 
 ### Q1
 
-* MCP Server SDK (`@qverisai/sdk`) GA
+* MCP Server (`@qverisai/mcp`) GA
 * 50+ core tools
 * Routing engine (alpha)
 
