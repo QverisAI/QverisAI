@@ -190,7 +190,8 @@ Status Code: 200 OK
   },
   "success": true,
   "error_message": null,
-  "elapsed_time_ms": 210.72
+  "elapsed_time_ms": 210.72,
+  "cost": 5.0
 }
 ```
 
@@ -203,6 +204,7 @@ Status Code: 200 OK
 | success | boolean | Yes | Whether the execution was successful |
 | error_message | string | No | Error message if execution failed |
 | elapsed_time_ms | number | No | Execution time in milliseconds |
+| cost | number | No | cost deducted from account |
 
 If the call to the third-party service fails due to reasons such as insufficient balance, quota exceeded, or other issues, success will be false, and error_message will contain detailed information about the failure.
 
@@ -458,4 +460,5 @@ You can then use below system prompt and start testing! Have fun exploring!
   role: 'system',
   content: 'You are a helpful assistant that can dynamically search and execute tools to help the user. First think about what kind of tools might be useful to accomplish the user\'s task. Then use the search_tools tool with query describing the capability of the tool, not what params you want to pass to the tool later. Then call suitable searched tool(s) using the execute_tool tool, passing parameters to the searched tool through params_to_tool. If tool has weighted_success_rate and avg_execution_time (in seconds), consider them when selecting which tool to call. You could reference the examples given if any for each tool. You could call make multiple tool calls in a single response.',
 }
+
 ```
